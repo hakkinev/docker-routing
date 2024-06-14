@@ -1,17 +1,21 @@
-FROM python:3.10
+# Use the official Node.js image from the Docker Hub as the base image
+FROM node:18
 
-WORKDIR /code
+# Create and change to the app directory
+WORKDIR /usr/src/app
 
-COPY ./requirements.txt /code/requirements.txt
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+# Install the app dependencies
+RUN npm install
 
-COPY ./app /code/app
+# Copy the rest of the application code to the working directory
+COPY . .
 
-# This can be overridden in .env if declared in docker-compose
-ENV MODE=production
+# Expose the port the app runs on
+EXPOSE 8080
 
-# Set MODE=development in .env when run locally to listen for changes
-CMD ["sh", "-c", "if [ \"$MODE\" = 'development' ]; then fastapi dev app/main.py --host 0.0.0.0 --port 8080 --reload; else fastapi run app/main.py --host 0.0.0.0 --port 8080; fi"]
+# Define the command to run the app
+CMD ["sh", "-c", "if [ \"$MODE\" = 'development' ]; then npm run dev; else npm start; fi"]
 
-#CMD ["fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "8080"]

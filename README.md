@@ -1,4 +1,4 @@
-# rahti2-fastapi 
+# rahti2 node.js
 
 ### For deployment to Rahti2
 
@@ -6,11 +6,6 @@ Note: OpenShift wants the main branch to be named *master* by default, you have 
 1. Push to origin/master to deploy
 2. Change the setting in Openshift to *main*:    
     Edit BuildConfig ==> Show advanced git options ==> Git reference: `main`
-
-
-See also: https://fastapi.tiangolo.com/deployment/docker/
-
-
 
 ### For local real-time development
 
