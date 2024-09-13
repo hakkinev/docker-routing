@@ -1,8 +1,8 @@
 # Use the official Node.js image from the Docker Hub as the base image
-FROM node:18
+FROM node:22
 
 # Create and change to the app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./

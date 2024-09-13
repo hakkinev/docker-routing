@@ -3,12 +3,12 @@ const app = express()
 require('dotenv').config()
 const PORT = process.env.PORT || 8080
 
-console.log(`Node.js ${process.version} dotenv: ${process.env.ENV_VAR}`)
+console.log(`Node.js ${process.version}`)
 
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({ msg: "Rahti2 node 0.1" })
+    res.json({ msg: "Rahti2 node 0.2" })
 })
 
 
